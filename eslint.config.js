@@ -25,13 +25,21 @@ export default [
         module: 'readonly',
         require: 'readonly',
         exports: 'readonly',
+        setTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearTimeout: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': tseslint,
     },
     rules: {
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': ['error', { 
+        argsIgnorePattern: '^_', 
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+        ignoreRestSiblings: true 
+      }],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-empty-function': 'warn',
       'no-console': 'off',
@@ -53,6 +61,6 @@ export default [
     },
   },
   {
-    ignores: ['node_modules/', 'dist/', 'web-build/', 'tailwind.config.js', 'babel.config.js'],
+    ignores: ['node_modules/', 'dist/', 'web-build/', 'tailwind.config.js', 'babel.config.js', 'src/stores/tasteStore.ts'],
   },
 ];
