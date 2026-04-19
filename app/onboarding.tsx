@@ -14,31 +14,33 @@ export default function OnboardingScreen() {
     recordSwipe(food, false);
     
     setTimeout(() => {
-      const nextIndex = currentIndex + 1;
-      if (nextIndex >= ONBOARDING_CARDS.length) {
-        analytics.trackFeedMePressed();
-        completeOnboarding();
-        router.replace('/(tabs)');
-      } else {
-        setCurrentIndex(nextIndex);
-      }
+      setCurrentIndex((prev) => {
+        const nextIndex = prev + 1;
+        if (nextIndex >= ONBOARDING_CARDS.length) {
+          analytics.trackFeedMePressed();
+          completeOnboarding();
+          router.replace('/(tabs)');
+        }
+        return nextIndex;
+      });
     }, 300);
-  }, [currentIndex, recordSwipe, completeOnboarding]);
+  }, [recordSwipe, completeOnboarding]);
 
   const handleSwipeRight = useCallback((food: FoodItem) => {
     recordSwipe(food, true);
     
     setTimeout(() => {
-      const nextIndex = currentIndex + 1;
-      if (nextIndex >= ONBOARDING_CARDS.length) {
-        analytics.trackFeedMePressed();
-        completeOnboarding();
-        router.replace('/(tabs)');
-      } else {
-        setCurrentIndex(nextIndex);
-      }
+      setCurrentIndex((prev) => {
+        const nextIndex = prev + 1;
+        if (nextIndex >= ONBOARDING_CARDS.length) {
+          analytics.trackFeedMePressed();
+          completeOnboarding();
+          router.replace('/(tabs)');
+        }
+        return nextIndex;
+      });
     }, 300);
-  }, [currentIndex, recordSwipe, completeOnboarding]);
+  }, [recordSwipe, completeOnboarding]);
 
   const visibleCards = ONBOARDING_CARDS.slice(currentIndex, currentIndex + 2);
 

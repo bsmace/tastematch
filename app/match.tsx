@@ -62,13 +62,12 @@ export default function MatchScreen() {
 
   // Countdown timer
   useEffect(() => {
-    if (!showMatch) return;
+    if (!showMatch || timeLeft <= 0) return;
     
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          // Timer expired - could trigger logic here
           return 0;
         }
         return prev - 1;
@@ -76,7 +75,7 @@ export default function MatchScreen() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [showMatch]);
+  }, [showMatch, timeLeft]);
 
   // Pulse animation for button
   useEffect(() => {
@@ -88,7 +87,7 @@ export default function MatchScreen() {
       -1,
       true
     );
-  }, []);
+  }, [scale]);
 
   const handleAccept = () => {
     if (!matchOffer) return;
