@@ -28,6 +28,7 @@ export default [
         setTimeout: 'readonly',
         setInterval: 'readonly',
         clearTimeout: 'readonly',
+        clearInterval: 'readonly',
       },
     },
     plugins: {
@@ -61,6 +62,6 @@ export default [
     },
   },
   {
-    ignores: ['node_modules/', 'dist/', 'web-build/', 'tailwind.config.js', 'babel.config.js', 'src/stores/tasteStore.ts'],
+    ignores: ['node_modules/', 'dist/', 'web-build/', 'tailwind.config.js', 'babel.config.js'],
   },
 ];
