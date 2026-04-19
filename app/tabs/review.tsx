@@ -1,10 +1,29 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function Review() {
+export default function ReviewScreen() {
   return (
-    <View className="flex-1 items-center justify-center bg-background">
-      <Text className="text-text text-2xl font-bold">Review</Text>
-      <Text className="text-text-muted mt-2">Camera coming soon</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Review</Text>
+      <Text style={styles.subtitle}>Coming in Phase 4</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0A0A0A',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#A0A0A0',
+    marginTop: 8,
+  },
+});
